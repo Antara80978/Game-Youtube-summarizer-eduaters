@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Time</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .points { float: right; font-weight: bold; color: green; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>🧠 Quiz Time! <span class="points">Coins: {{ points }}</span></h1>
+
+    <form method="POST">
+        <div class="question">
+            <p><strong>1. {{ q1[0] }}</strong></p>
+            {% for opt in q1[1] %}
+                <input type="radio" name="answer1" value="{{ opt }}" required> {{ opt }}<br>
+            {% endfor %}
+        </div>
+
+        <div class="question">
+            <p><strong>2. {{ q2[0] }}</strong></p>
+            {% for opt in q2[1] %}
+                <input type="radio" name="answer2" value="{{ opt }}" required> {{ opt }}<br>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Submit Answers</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('index') }}">🔙 Back to Home</a>
+</body>
+</html>

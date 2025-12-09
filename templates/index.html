@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Summarizer</title>
+</head>
+<body>
+    <h1>YouTube 📺 Summarizer with Quiz 🎯</h1>
+    <p style="position: absolute; top: 10px; right: 20px;">💰 Coins: {{ points }}</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul style="color: green;">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="youtube_url" placeholder="Enter YouTube URL" required>
+        <br><br>
+        <button name="action" value="transcript">🎙️ Get Transcript</button>
+        <button name="action" value="summary">📝 Summarize with Emojis</button>
+    </form>
+
+    {% if transcript %}
+        <h2>Transcript:</h2>
+        <p>{{ transcript }}</p>
+    {% endif %}
+
+    {% if summary %}
+        <h2>Summary:</h2>
+        <p>{{ summary }}</p>
+    {% endif %}
+
+    <br><br>
+    <a href="/quiz"><button>🎯 Take Quiz & Win Coins</button></a>
+</body>
+</html>
